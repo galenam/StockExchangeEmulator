@@ -1,7 +1,5 @@
-﻿using System.Text;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 
 using IHost host = Host.CreateDefaultBuilder(args)
@@ -19,7 +17,9 @@ using IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((context, services) =>
     {
         var configurationRoot = context.Configuration;
-        //services.AddSingleton<IFillDataService, FillDataService>();
+        services.AddSingleton<StockExchangePrice>();
+        services.AddSingleton<ICreator, Creator>();
+        services.AddSingleton<StockExchangeEmulator>();
 
         services.AddOptions<Settings>()
             .Bind(configurationRoot.GetSection(nameof(Settings)));
