@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Reactive.Subjects;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -29,5 +30,10 @@ using IHost host = Host.CreateDefaultBuilder(args)
 
 using IServiceScope serviceScope = host.Services.CreateScope();
 var provider = serviceScope.ServiceProvider;
-//var fService = provider.GetRequiredService<IFillDataService>();
-//await fService.FillDb();
+var emulator = provider.GetRequiredService<StockExchangeEmulator>();
+emulator.Subscribe(Console.WriteLine);
+/*
+var subj = new Subject<ActionSum>();
+emulator.Subscribe(subj);
+subj.OnNext(ActionSum value) => { Console.WriteLine()};
+*/
