@@ -1,7 +1,7 @@
-﻿using System.Reactive.Subjects;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 using IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureAppConfiguration((hostingContext, configuration) =>
@@ -12,28 +12,26 @@ using IHost host = Host.CreateDefaultBuilder(args)
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
         IConfigurationRoot configurationRoot = configuration.Build();
         var options =
-            configurationRoot.GetSection(nameof(Settings))
-                             .Get<Settings>();
+            configurationRoot.Get<Settings>();
     })
     .ConfigureServices((context, services) =>
     {
         var configurationRoot = context.Configuration;
-        services.AddSingleton<StockExchangePrice>();
+        services.AddSingleton<IStockExchangePrice, StockExchangePrice>();
         services.AddSingleton<ICreator, Creator>();
-        services.AddSingleton<StockExchangeEmulator>();
+        services.AddSingleton<IStockExchangeEmulator, StockExchangeEmulator>();
+        services.AddSingleton<ITradingStrategy, TradingStrategy>();
 
         services.AddOptions<Settings>()
-            .Bind(configurationRoot.GetSection(nameof(Settings)));
-
+            .Bind(configurationRoot);
     })
+    .UseSerilog((context, services, loggerConfiguration) => loggerConfiguration
+                    .ReadFrom.Configuration(context.Configuration)
+                    .Enrich.FromLogContext())
     .Build();
 
 using IServiceScope serviceScope = host.Services.CreateScope();
 var provider = serviceScope.ServiceProvider;
-var emulator = provider.GetRequiredService<StockExchangeEmulator>();
+var emulator = provider.GetRequiredService<IStockExchangeEmulator>();
 emulator.Subscribe(Console.WriteLine);
-/*
-var subj = new Subject<ActionSum>();
-emulator.Subscribe(subj);
-subj.OnNext(ActionSum value) => { Console.WriteLine()};
-*/
+Console.ReadLine();

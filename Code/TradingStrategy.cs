@@ -1,16 +1,20 @@
 using System.Reactive.Disposables;
+using Microsoft.Extensions.Logging;
+public interface ITradingStrategy : IObserver<int>, IObservable<Action> { }
 
-public class TradingStrategy : IObserver<int>, IObservable<Action>
+public class TradingStrategy : ITradingStrategy
 {
-    StockExchangePrice _stockExchangePrice;
+    IStockExchangePrice _stockExchangePrice;
     IStrategy _strategy;
     IList<IObserver<Action>> _observers = new List<IObserver<Action>>();
+    ILogger<TradingStrategy> _logger;
 
-    public TradingStrategy(StockExchangePrice stockExchangePrice, ICreator creator)
+    public TradingStrategy(IStockExchangePrice stockExchangePrice, ICreator creator, ILogger<TradingStrategy> logger)
     {
         _stockExchangePrice = stockExchangePrice;
         _stockExchangePrice.Subscribe(this);
         _strategy = creator.Create();
+        _logger = logger;
     }
     public void OnCompleted()
     {
@@ -27,6 +31,7 @@ public class TradingStrategy : IObserver<int>, IObservable<Action>
         var action = _strategy.GetAction(value);
         foreach (var o in _observers)
         {
+            _logger.LogInformation($"{nameof(TradingStrategy)} OnNext action={action}");
             o.OnNext(action);
         }
     }

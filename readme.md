@@ -21,3 +21,9 @@ Cистема состоит из нескольких частей:
 
 По стеку – dotnet. UI не требуется.
 Для экономии времени (1), (2), (3) можно представить как классы консольного приложения.
+
+# Stock Exchange Emulator
+1. StockExchangePrice class consists of 2 timers: _timerChangeBehaviour changes the direction of changing a price, _timerChangePrice changes a price. StockExchangePrice sends OnNext with the price to observers.
+2. TradingStrategy subscribes for the StockExchangePrice, calls IStrategy.GetAction and sends OnNext with the action. IStrategy defines by using the fabric method of ICreator based on strategy name defined in appconfig.json. The strategy name  should correspond to DisplayAttribute for the StrategyType enum.
+3. StockExchangeEmulator subscribes for both TradingStrategy & StockExchangePrice. StockExchangeEmulator decides what to do with stocks. 
+4. Program print info to the console

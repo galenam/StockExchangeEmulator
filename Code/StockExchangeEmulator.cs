@@ -1,19 +1,29 @@
 using System.Reactive.Disposables;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
-public class StockExchangeEmulator : IObserver<int>, IObserver<Action>, IObservable<ActionSum>
+public interface IStockExchangeEmulator : IObserver<int>, IObserver<Action>, IObservable<ActionSum> { }
+public class StockExchangeEmulator : IStockExchangeEmulator
 {
     int _count;
     int _summ;
     int _price;
     Settings _settings;
+    ITradingStrategy _tradingStrategy;
+    IStockExchangePrice _stockExchangePrice;
+    ILogger<StockExchangeEmulator> _logger;
 
     IList<IObserver<ActionSum>> _observers = new List<IObserver<ActionSum>>();
-    public StockExchangeEmulator(IOptions<Settings> options)
+    public StockExchangeEmulator(IOptions<Settings> options, ITradingStrategy tradingStrategy, IStockExchangePrice stockExchangePrice,
+        ILogger<StockExchangeEmulator> logger)
     {
         _count = options.Value.DefaultCount;
         _summ = options.Value.DefaultSum;
         _settings = options.Value;
+        _tradingStrategy = tradingStrategy;
+        _tradingStrategy.Subscribe(this);
+        _stockExchangePrice = stockExchangePrice;
+        _stockExchangePrice.Subscribe(this);
+        _logger = logger;
     }
 
     public void OnCompleted()
@@ -45,12 +55,14 @@ public class StockExchangeEmulator : IObserver<int>, IObserver<Action>, IObserva
         }
         foreach (var o in _observers)
         {
+            _logger.LogInformation($"{nameof(StockExchangeEmulator)} call {nameof(OnNext)} Action={value} Sum={_summ}");
             o.OnNext(new ActionSum { Action = value, Sum = _summ });
         }
     }
 
     public void OnNext(int value)
     {
+        _logger.LogInformation($"{nameof(StockExchangeEmulator)} {nameof(OnNext)} inside value={value}");
         _price = value;
     }
 

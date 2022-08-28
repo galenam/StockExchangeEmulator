@@ -17,5 +17,7 @@ public enum Action
 public enum StrategyType
 {
     [Display(Name = "Simple")]
-    Simple
+    Simple,
+    [Display(Name = "Empty")]
+    Empty
 }
