@@ -1,3 +1,11 @@
+# Instructions
+1. The project tested to run in VS Code only.
+2. Run the app:
+ - cd .\code
+ - dotnet run
+3. Test the app:
+ - cd .\tests  (cd ..\test from code folder)
+ - dotnet test
 # Эмулятор простого биржевого робота.
  
 Описание: 
