@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
+namespace StockExchangeEmulator.Emulator;
+
 public static class Helper {
     public static T GetEnumValueByDisplayName<T>(this string attributeName)
         where T : struct
@@ -20,4 +22,4 @@ public static class Helper {
         }
         return default(T);
     }
- }
+}

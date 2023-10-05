@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "code", "Code\code.csproj", "{AA3983D0-8418-4654-9127-912C3235C9C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchangeEmulator.Emulator", "src\StockExchangeEmulator.Emulator\StockExchangeEmulator.Emulator.csproj", "{AA3983D0-8418-4654-9127-912C3235C9C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "Tests\tests.csproj", "{25732252-B8F9-4842-92A1-9650AD5D4D7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchangeEmulator.Tests", "Tests\StockExchangeEmulator.Tests.csproj", "{25732252-B8F9-4842-92A1-9650AD5D4D7A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5BB8F4EA-97F2-4B5B-82F2-88BB1E7158BF}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{20A938B6-5E1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B723D040-1FFF-407E-81E8-1BB8D10E48E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchangeEmulator.Domain", "src\StockExchangeEmulator.Domain\StockExchangeEmulator.Domain.csproj", "{F6A8EA15-212D-4225-9548-C282B0C033FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +34,14 @@ Global
 		{25732252-B8F9-4842-92A1-9650AD5D4D7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25732252-B8F9-4842-92A1-9650AD5D4D7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25732252-B8F9-4842-92A1-9650AD5D4D7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6A8EA15-212D-4225-9548-C282B0C033FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6A8EA15-212D-4225-9548-C282B0C033FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6A8EA15-212D-4225-9548-C282B0C033FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6A8EA15-212D-4225-9548-C282B0C033FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AA3983D0-8418-4654-9127-912C3235C9C2} = {20A938B6-5E1D-4ADC-9640-DC85600C893A}
 		{25732252-B8F9-4842-92A1-9650AD5D4D7A} = {B723D040-1FFF-407E-81E8-1BB8D10E48E5}
+		{F6A8EA15-212D-4225-9548-C282B0C033FC} = {20A938B6-5E1D-4ADC-9640-DC85600C893A}
 	EndGlobalSection
 EndGlobal

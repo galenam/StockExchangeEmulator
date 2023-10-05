@@ -1,3 +1,5 @@
+namespace StockExchangeEmulator.Emulator;
+
 public class Settings
 {
     public int InitialPrice { get; set; }

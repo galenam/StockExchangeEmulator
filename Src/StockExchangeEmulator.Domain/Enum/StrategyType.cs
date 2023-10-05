@@ -1,18 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-public enum PriceChangingEnum
-{
-    Higher,
-    Lower,
-    Stable
-}
-
-public enum Action
-{
-    Sell,
-    Buy,
-    Hold
-}
+namespace StockExchangeEmulator.Domain.Enum;
 
 public enum StrategyType
 {
