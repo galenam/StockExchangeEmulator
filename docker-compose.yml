@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+
+  stock-exchange-emulator:
+    container_name: stock-exchange-emulator
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    build:
+      context: .
+      dockerfile: Src/StockExchangeEmulator.Emulator/Dockerfile
