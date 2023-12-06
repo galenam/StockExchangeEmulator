@@ -12,7 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5BB8F4
 		Directory.Build.targets = Directory.Build.targets
 		.gitignore = .gitignore
 		readme.md = readme.md
-		Dockerfile_ = Dockerfile_
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject

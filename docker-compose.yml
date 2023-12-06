@@ -9,3 +9,18 @@ services:
     build:
       context: .
       dockerfile: Src/StockExchangeEmulator.Emulator/Dockerfile
+
+  db:
+    image: postgres:latest
+    container_name: db
+    environment:
+      - POSTGRES_DB=stock-exchange-emulator
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+    command:
+      - -c
+      - max_prepared_transactions=100
+    volumes:
+      - ./postgres.conf:/etc/postgresql/postgresql.conf
+    ports:
+      - "5405:5432"

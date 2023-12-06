@@ -19,4 +19,5 @@ Cистема состоит из нескольких частей:
 По стеку – dotnet. UI не требуется.
 Для экономии времени (1), (2), (3) можно представить как классы консольного приложения.
 
-todo: доделать докер
+docker build -f Src/StockExchangeEmulator.Emulator/Dockerfile -t stockexchangeemulator .
+
