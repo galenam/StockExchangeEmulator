@@ -24,5 +24,7 @@
     <PackageVersion Include="Quartz" Version="3.3.3" />
     <PackageVersion Include="Quartz.Extensions.DependencyInjection" Version="3.3.3" />
     <PackageVersion Include="Quartz.Extensions.Hosting" Version="3.3.3" />
+    <PackageVersion Include="FluentMigrator.Runner" Version="5.0.0" />
+    <PackageVersion Include="Npgsql" Version="8.0.1" />
   </ItemGroup>
 </Project>

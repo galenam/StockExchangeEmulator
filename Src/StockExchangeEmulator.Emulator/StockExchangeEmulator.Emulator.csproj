@@ -19,10 +19,13 @@
     <PackageReference Include="Serilog.Sinks.File" />
     <PackageReference Include="Serilog.Extensions.Logging" />
     <PackageReference Include="MediatR" />
+    <PackageReference Include="FluentMigrator.Runner" />
+    <PackageReference Include="Npgsql" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\StockExchangeEmulator.Domain\StockExchangeEmulator.Domain.csproj" />
+    <ProjectReference Include="..\StockExchangeEmulator.Persistence\StockExchangeEmulator.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>

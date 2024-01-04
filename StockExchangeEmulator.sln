@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B723D040
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchangeEmulator.Domain", "src\StockExchangeEmulator.Domain\StockExchangeEmulator.Domain.csproj", "{F6A8EA15-212D-4225-9548-C282B0C033FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchangeEmulator.Persistence", "Src\StockExchangeEmulator.Persistence\StockExchangeEmulator.Persistence.csproj", "{47EB3CB9-31DA-4E54-A8F5-E41EB6782741}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,10 +41,15 @@ Global
 		{F6A8EA15-212D-4225-9548-C282B0C033FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6A8EA15-212D-4225-9548-C282B0C033FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6A8EA15-212D-4225-9548-C282B0C033FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47EB3CB9-31DA-4E54-A8F5-E41EB6782741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47EB3CB9-31DA-4E54-A8F5-E41EB6782741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47EB3CB9-31DA-4E54-A8F5-E41EB6782741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47EB3CB9-31DA-4E54-A8F5-E41EB6782741}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AA3983D0-8418-4654-9127-912C3235C9C2} = {20A938B6-5E1D-4ADC-9640-DC85600C893A}
 		{25732252-B8F9-4842-92A1-9650AD5D4D7A} = {B723D040-1FFF-407E-81E8-1BB8D10E48E5}
 		{F6A8EA15-212D-4225-9548-C282B0C033FC} = {20A938B6-5E1D-4ADC-9640-DC85600C893A}
+		{47EB3CB9-31DA-4E54-A8F5-E41EB6782741} = {20A938B6-5E1D-4ADC-9640-DC85600C893A}
 	EndGlobalSection
 EndGlobal

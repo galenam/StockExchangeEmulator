@@ -6,6 +6,7 @@ services:
     container_name: stock-exchange-emulator
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+      - CONNECTION_STRING = postgresql://test:test@localhost:5407/stock-exchange-emulator
     build:
       context: .
       dockerfile: Src/StockExchangeEmulator.Emulator/Dockerfile
@@ -23,4 +24,4 @@ services:
     volumes:
       - ./postgres.conf:/etc/postgresql/postgresql.conf
     ports:
-      - "5405:5432"
+      - "5407:5432"
